@@ -1,0 +1,28 @@
+SELECT 
+    tfp_table.Country,
+    tfp_table.Year,
+    tfp_table.Total_Outall,
+    tfp_table.TFP_Index,
+    tfp_table.Land_Index,
+    tfp_table.Labor_Index,
+    tfp_table.Capital_Index,
+    tfp_table.Materials_Index,
+    CO2.energy_per_capita,
+    Energy.gdp,
+    CO2.cumulative_co2
+FROM (
+    SELECT 
+        Country,
+        Year,
+        TFP_Index AS TFP_Index,
+        Outall_Index AS Total_Outall,
+        Land_Index AS Land_Index,
+        Labor_Index AS Labor_Index,
+        Capital_Index AS Capital_Index,
+        Materials_Index AS Materials_Index
+    FROM tfp_table
+    WHERE Year BETWEEN 1993 AND 2021
+) AS tfp_table
+LEFT JOIN co2_table CO2 ON tfp_table.Country = CO2.Country AND tfp_table.Year = CO2.Year
+LEFT JOIN energy_table Energy ON tfp_table.Country = Energy.Country AND tfp_table.Year = Energy.Year
+ORDER BY tfp_table.Country, tfp_table.Year;

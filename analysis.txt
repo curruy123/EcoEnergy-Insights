@@ -1,0 +1,178 @@
+Why did you use this statistical test or ML algorithm? Which other tests did you consider or evaluate?
+What metric(s) did you use to measure success or failure, and why did you use it? What challenges did you face evaluating the model?
+Did you have to clean or restructure your data?
+
+
+STATISTICAL TESTING:
+
+
+Our first hypothesis was that there is a statistical difference in the index of total agriculture TFP production in countries from 2010 and 2021. 
+Our null hypothesis was that there is not a significant difference in agriculture TFP production between countries in 2010 and 2021, 
+with our alternate hypothesis being that there is a significant difference. In order to test this hypothesis, we used 
+a paired t-test. A paired t test is the best in this case because we have a data group that has been measured twice 
+(2010 and 2021). We found that the paired t p-value was 0.00376... which was indeed lower than 0.05 - the threshold in 
+which the null is rejected. Thus, we could conclude that there was a significant statistical change in the TFP in 
+countries from 2010 and 2011. Similarly, we also did this for our climate change analysis, which was measured through
+C02 emissions for our third hypothesis. For this test, we compared the CO2 growth from 2018 and 2021. The p-value in 
+this case was 0.00994324... which is also less than 0.05, making this a statistically significant result. There is a 
+statistically significant change in cumulative CO2 growth for countries from 2018 and 2021. 
+
+
+For our second hypothesis, we used a two sample t test instead. This t test is used for when there are two independent
+ groups. In this case, we had compared the change in energy per capita between the US and China from the time period 
+ 1993 to 2021. We did these two countries as they have the largest CO2 emissions in the world. We found that the two 
+ sample p values in this case was 6.979371745985823e-41, which was also statistically significant.
+
+
+Hypothesis 1: Decade Analysis
+
+
+There is a significant statistical change in the TFP production in countries from 2010  and 2021. 
+We reject the null hypothesis that there is no change in TFP production over these years. The negative t-statistic indicates
+that the mean TFP production in 2021 is lower than in 2010.
+
+
+Results:
+
+
+Paired T Statistic:-3.628897016285395
+Paired T P Value:0.00037681794450126045
+
+
+Hypothesis 2: Superpower Country Analysis
+
+
+There is a statistically significant change in energy per capita between the United States and China from 1993-2021.
+ The positive t-statistic suggests that the average energy per capita in the United States is higher than in China over 
+ this period.
+
+
+Results:
+
+
+Two Sample T Statistic:36.73650151063472
+Two Sample P Value:6.979371745985823e-41
+
+Hypothesis 3: Climate Change Analysis
+
+
+Results:
+
+
+the null hypothesis that there is no change in cumulative CO2 growth over these years is rejected. The negative
+ t-statistic indicates a reduction in cumulative CO2 growth rates by 2021 compared to 2018.
+Paired T Statistic:-2.6101665392016784
+Paired T P Value:0.009943240204483639
+
+
+We used the test results above to measure how successful we were in testing our hypothesis. However, just because our
+results for the three hypotheses were statistically significant, we still went through a few roadblocks. We created 
+these previous hypotheses based off of our initial knowledge and assumptions of the relationship between climate
+change, energy, and agriculture. The p-values and t-statistic values confirmed these initial educated hypotheses 
+that we had proposed. Initially, we decided to use data from the continents, but we found that this went against 
+the central limit theorem and that we needed a larger sample size to also make sure that our data was normally
+distributed. Thus, we decided to look at countries instead of continents for all of this data instead. We had to go 
+back and retrieve this data that we initially thought wouldn't be helpful. Additionally, there were some challenges 
+in evaluating the model. Some countries during certain years had undocumented values for certain attributes such as
+the cumulative carbon dioxide emitted and their GDP. As a result, there were some NaN values within our dataset 
+that had to be dropped, effectively removing few countries from contributing to the analysis of our data. 
+
+
+Paired t test
+Two sample t-test
+Paired t-test
+
+
+What is your interpretation of the results? Do you accept or deny the hypothesis,
+or are you satisfied with your prediction accuracy? For prediction projects, we expect you to argue why you got the accuracy/success
+metric you have. Intuitively, how do you react to the results? Are you confident in the results?
+
+
+Our interpretation of the results above was quite satisfying. We are quite pleased, as we found that the different 
+t-tests that we performed showed statistically significant results for all three of our hypotheses. The p-values were
+quite strong, confirming what we had initially thought about the progression of energy, TFP, and emission levels. 
+Thus, we accepted all three hypotheses. However, our regression reflected something different than what we expected. 
+We expected the regression to portray a negative relationship between TFP and emissions, but we saw a slight positive
+relationship. We thought that this was because of other confounding factors that positively affected the TFP. Thus, 
+we thought there were some confounding factors that were preventing this relationship from being represented.
+
+
+MACHINE LEARNING:
+Why did you use this statistical test or ML algorithm? Which other tests did you consider or evaluate?
+What metric(s) did you use to measure success or failure, and why did you use it? What challenges did you face evaluating the model?
+Did you have to clean or restructure your data?
+
+
+We chose to use the k-means methodology because our data didn’t have any inherent structure while trying to find a 
+relationship between multiple factors. We also used linear regression because we wanted to see a linear trend 
+relationship between co2 emissions and TFP. For these two tests, we also compared our original hypotheses to the 
+results to measure whether or not we were succesful. We faced challenges in trying to ready the data for the algorithm 
+because we had countries with empty data for specific years (perhaps due to country policy changes regarding privacy) 
+so cleaning up gave us a difficult task. 
+
+
+What is your interpretation of the results? Do you accept or deny the hypothesis,
+or are you satisfied with your prediction accuracy? For prediction projects, we expect you to argue why you got the accuracy/success
+
+
+This ML algorithm grouped all of our data based off of their certain properties, which was represented by different 
+color groupings on our model. There were three axes: total_outall, avg_energy_per_capita, and cumulative_co2. 
+Our data was clustered based on these categories. There doesn't appear to be a strong visible correlation between Avg. 
+Energy Per Capita and Cumulative CO2 across clusters, as points are spread across the range of energy values without a
+clear pattern of increasing or decreasing CO2.  Similarly, there is no clear trend between Avg. Energy Per Capita and 
+Total Outall, indicating that higher energy per capita does not necessarily correlate with higher total output in
+this dataset.  There is some indication that higher Total Outall might be associated with lower Cumulative CO2 in some 
+clusters, but this is not consistent across all data points. We are surprised that there aren't coherent patterns between
+the three features, as from a logical standpoint, increased energy usage and carbon dioxide emissions should have some 
+association with each other.
+
+
+The only hesitancy about our success could be the apparent clustering, as from a visual standpoint, it seemed a lot of 
+the points that belong in different clusters are close to each other. However,, based on our elbow plot, a K value of 3
+seemed reasonable and from cautious observations of the 3D figure, I believe our judgments are reasonable.
+
+
+As for the linear regression, we found a slightly positive relationship, while we expected this relationship to be 
+negative. It makes sense to us that it is positive because co2 emissions have always been rising throughout the history 
+of the world, while agriculture got more technologically advanced since the industrial revolution until now, which means
+we were bound to see a positive relationship. However, we firmly believe that the line is relatively flat because of 
+the trend in recent years of TFP. As we saw in our third hypothesis, TFP production has gone down in the last three 
+years. If we went farther back a few years, this could very well be negative as well, so the line could be getting 
+pulled to a more flat slope as time goes from here.
+
+
+OVERALL:
+Did you find the results corresponded with your initial belief in the data? If yes/no, why do you think this was the case?
+
+
+There was so much data that we had to work with that we actually didn't even look through it initially. For this reason, 
+we were really excited to implement the concepts we learned in class so that we could see the conclusions drawn from the 
+dataset. We weren't confident if there would be clear relationships in the data, but after seeing our k-means and regression 
+graphs and our t test results, we were quite satisfied.
+
+
+Do you believe the tools for analysis that you chose were appropriate? If yes/no, why or what method could have been used?
+
+
+Yes, we do believe that the tools for analysis that we chose were appropriate. We thought by using the k-means, our 
+data was clustered in a reasonable manner and we were able to find meaning in data that was not structured, 
+especially with how much countries vary with the diversity of data that wewere observing. We thought our t-tests were
+ also significant because they provided significant results for 
+certain data groups that we were observing. Lastly, we thought that a regression for our emissions and TFP 
+relationship was sufficient, but we thought that it could have been even better if we used an instrumental variable. 
+This would have made sure that all confounding variables are taken into account, and we would be able to isolate the 
+relationship between the two variables. 
+
+
+Was the data adequate for your analysis? If not, what aspects of the data were problematic and how could you have remedied that?
+
+
+The data was definitely adequate for analysis. When we had first found our datasets we were surprised and also eager 
+because we were worried that we wouldn’t be able to find enough data. Some countries did not have data
+which could be due to a variety of things such as potential policy changes, undocumented data, or other things. As a result,
+some countries(very few) for some of our data analysis were not accounted for. However, it did not have a big impact other 
+than the assumptions made and the context in which the data was gathered We had sufficient data from recent 
+years but also decades ago, which was really helpful. We had so much data that it was almost overwhelming in a sense, 
+however. There were some extra steps that we had to take in our code to filter out some of the rows that had empty 
+values. Like we said earlier, we also decided to use countries instead of continents for our dataset, so this required 
+some extra cleaning later on as well. 

@@ -1,0 +1,60 @@
+1. Continent
+Type of Data: Categorical (String)
+Default Value: N/A
+Range of Value: {AFRICA, ASIA, EUROPE, LAC (Latin America and the Caribbean), NORTH AMERICA, OCEANIA}
+Distribution of Values: Discrete distribution over the six continents.
+Uniqueness: Yes
+Required: Yes
+Usage in Analysis: Can be used to segment data by geographical region.
+
+Sensitive Information: No
+2. Sum_Total_Output
+Type of Data: Numerical (Floating point)
+Default Value: 0.0
+Distribution of Values: Likely skewed towards smaller economies, with few large values.
+Uniqueness: No
+Required: Yes
+Usage in Analysis: To understand the scale of economic activity.
+Sensitive Information: No
+
+3. Avg_TFP_Index
+Type of Data: Numerical (Floating point)
+Default Value: 0.0
+Range of Value: 0-200 (assumed based on typical index scale)
+Distribution of Values: Centered around a global average with regional variations.
+Uniqueness: No
+Required: Yes
+Usage in Analysis: To compare productivity across regions.
+Sensitive Information: No
+
+4. Avg_Land_Index
+Same as above for the Avg_TFP_Index but specific to land productivity.
+
+5. Avg_Labor_Index
+Same as above, adjusted for labor productivity.
+
+6. Avg_Capital_Index
+Same as above, focusing on capital productivity.
+
+7. Avg_Materials_Index
+Same as above, for materials productivity.
+
+8. Avg_Fossil_Fuel_Consumption
+Type of Data: Numerical (Floating point)
+Default Value: 0.0
+Range of Value: Positive real numbers
+Distribution of Values: Likely skewed, with industrialized continents showing higher values.
+Uniqueness: No
+Required: Yes
+Usage in Analysis: To assess environmental impact.
+Sensitive Information: No
+Additional Attributes
+Avg_Energy_Per_Capita: Treated similarly to the above attributes, focusing on per capita energy consumption.
+
+General Assumptions
+All numerical values are considered to have a certain degree of measurement error.
+The dataset does not account for intra-continental variations.
+Temporal changes are not captured; the data represents a snapshot in time.
+Handling Sensitive Information
+While the dataset does not directly contain sensitive information, careful consideration should be given to how data,
+ especially related to energy consumption and environmental impact, is presented and used, to avoid geopolitical sensitivities.

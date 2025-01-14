@@ -1,0 +1,29 @@
+SELECT 
+    tfp_table.Country,
+    SUM(tfp_table.Sum_Total_Outall) AS Total_Outall,
+    AVG(tfp_table.Avg_TFP_Index) AS Avg_TFP_Index,
+    AVG(tfp_table.Avg_Land_Index) AS Avg_Land_Index,
+    AVG(tfp_table.Avg_Labor_Index) AS Avg_Labor_Index,
+    AVG(tfp_table.Avg_Capital_Index) AS Avg_Capital_Index,
+    AVG(tfp_table.Avg_Materials_Index) AS Avg_Materials_Index,
+    AVG(CO2.energy_per_capita) AS Avg_Energy_Per_Capita,
+    SUM(Energy.gdp) AS Total_GDP,
+    SUM(CO2.cumulative_co2) AS Total_Cumulative_CO2
+FROM (
+    SELECT 
+        Country,
+        Year,
+        AVG(TFP_Index) AS Avg_TFP_Index,
+        SUM(Outall_Index) AS Sum_Total_Outall,
+        AVG(Land_Index) AS Avg_Land_Index,
+        AVG(Labor_Index) AS Avg_Labor_Index,
+        AVG(Capital_Index) AS Avg_Capital_Index,
+        AVG(Materials_Index) AS Avg_Materials_Index
+    FROM tfp_table
+    WHERE Year BETWEEN 1993 AND 2021
+    GROUP BY Country, Year
+) AS tfp_table
+LEFT JOIN co2_table CO2 ON tfp_table.Country = CO2.Country AND tfp_table.Year = CO2.Year
+LEFT JOIN energy_table Energy ON tfp_table.Country = Energy.Country AND tfp_table.Year = Energy.Year
+GROUP BY tfp_table.Country
+ORDER BY tfp_table.Country;
